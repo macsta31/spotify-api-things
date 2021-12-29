@@ -122,7 +122,8 @@ footer{
 }
 
 .dark-bg{
-    background-color: #191414;
+    background: linear-gradient(#191414, #221e1e);
+    /* background-color: #221e1e; */
 }
 .main-container{
     display: flex;
@@ -131,7 +132,7 @@ footer{
     height: 100%;
 }
 #data-box{
-    background-color:#221e1e; 
+    background-color:#181313; 
     width: 40%;
     padding: 2em 3em 3em 3em;
     
