@@ -1,0 +1,162 @@
+::placeholder{
+    color: black;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    text-align: center;
+}
+
+
+*{
+    border: 0;
+    margin:0;
+    box-sizing: border-box;
+}
+.body-container{
+
+    height: 100vh;
+    color: white;
+    border: 3em;
+
+}
+ul{
+    padding:0;
+    list-style: none;
+
+}
+li{
+    list-style: none;
+}
+body{
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font:1em;
+}
+h1{
+    font-size: 4em;
+}
+h2{
+    width:max-content;
+    font-size: 2em;
+    text-align: center;
+}
+header{
+    padding: 1.5em;
+    display:flex;
+    flex:wrap;
+    align-items: center;
+    justify-content: center;
+    flex-direction:column;
+    gap: 1em;
+}
+form{
+    padding: 15px;
+}
+#search-form{
+    display:flex;
+    gap: 5px;
+}
+#search-bar:focus,
+#search-button:focus{
+    outline: none;
+}
+#search-bar{
+    order:none;
+    background-image:none;
+    background-color:#828282;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    padding: 0.5rem;
+    width: 200px;
+    color:black;
+    border: 1px solid black;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+#search-button{
+    background-image:none;
+    background-color:#828282;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    padding: 0.5rem;
+    width: min-content;
+    color:black;
+    border: 1px solid black;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    
+}
+footer{
+    height: 200px;
+}
+.footer-container{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items:center;
+    gap: 1em;
+}
+#footer-title{
+    padding: 1em;
+}
+#references{
+    display:flex;
+    align-items:center;
+    justify-content: center;
+    gap:2em;
+    padding: 0.5em;
+
+}
+
+
+/* specific */
+#page-title{
+    padding-top: 0.5em;
+}
+.sptf-colors{
+    background: linear-gradient(0deg, #191414, 65%, #1DB954);
+    color: white;
+}
+.sptf-colors-inverted{
+    background:linear-gradient(#191414,#424242);
+    color: white;
+}
+
+.dark-bg{
+    background-color: #191414;
+}
+.main-container{
+    display: flex;
+    flex-direction: row;
+    gap: 4em;
+    height: 100%;
+}
+#data-box{
+    background-color:#221e1e; 
+    width: 40%;
+    padding: 2em 3em 3em 3em;
+    
+}
+#meta-data{
+    padding-top: 15px;
+    text-align: center;
+}
+#lyrics-box{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2em 2em 2em 0;
+}
+
+#lyrics-box-title{
+    width: 100%;
+    text-align: center;
+    padding-bottom: 1em;
+}
+
+#lyrics{
+    text-align: center;
+}
+#song-title{
+    width: 100%;
+    text-align:center;
+}
