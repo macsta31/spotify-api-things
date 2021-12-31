@@ -13,20 +13,38 @@
         <ul id="saved-songs">
             <li>Save a Song!</li>
         </ul>
-        <form action="search" method="get" id="search-form">
-            <input type="search" name="Song name" id="search-bar" placeholder="Song Name">
-            <button type="submit" id="search-button">Search</button>
+        <form action="" id="search-form">
+            <input type="hidden" id="hidden_token">
+            <div class="subform">
+                <span>
+                    <label for="Genre">Genre:</label>
+                </span>
+                <span>
+                    <select name="" id="select_genre">
+                        <option>Select...</option>
+                    </select>
+                </span> 
+            </div> 
+            <div class="subform">
+                <label for="Playlist">Playlists:</label> 
+                <select name="" id="select_playlist">
+                    <option>Select...</option>
+                </select>
+            </div>
+            <div class="subform_btn">
+                <button type="submit" id="btn_submit">Search</button>
+            </div>
         </form>
     </header>
     <div class="body-container dark-bg">
         <div class="main-container">
             <section id="data-box">
                 <h2 id="song-title">Song Title</h2>
-                <ul id="meta-data">
-                    <li>data</li>
-                </ul>
+                <div>
+                    <div id="song-details"></div>
+                <div>
             </section>
-            <section id="lyrics-box">
+            <section class="song-list" id="lyrics-box">
                 <h2 id="lyrics-box-title">Lyrics</h2>
                 <p id="lyrics">
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique nesciunt exercitationem voluptas, repudiandae hic veniam cupiditate accusamus perferendis architecto saepe consectetur qui praesentium illum cum, dignissimos nihil inventore vero laboriosam.
