@@ -1,16 +1,17 @@
 const APIController = (function() {
-    
     const clientID = '85db4bae48b546eb97603fbd30275463';
     const clientSecret = '10dfcc70cd9b4012ba5c534ca80265d0';
 
-    //private methods 
+    // private methods
+
+
     const _getToken = async () => {
+
         const result = await fetch('https://accounts.spotify.com/api/token', {
             method: 'POST',
-            headers : {
-                'Content-Type' : 'application/x-www-form-urlencoded',
-                'Authorization' : 'Basic' + btoa( clientID + ':' + clientSecret)
-
+            headers: {
+                'Content-Type' : 'application/x-www-form-urlencoded', 
+                'Authorization' : 'Basic ' + btoa(clientID + ':' + clientSecret)
             },
             body: 'grant_type=client_credentials'
         });
@@ -19,153 +20,124 @@ const APIController = (function() {
         return data.access_token;
     }
 
-    const _getGenres = async(token) => {
-        const result = await fetch('https://api.spotify.com/v1/browse/categories?locale=sv_US', {
+    const _getTracks = async (token, songTitle) => {
+        console.log(songTitle);
+
+        const result = await fetch(`https://api.spotify.com/v1/search?q=track%3A${songTitle}&type=track&market=ES&limit=10&offset=5`, {
             method: 'GET',
-            headers : {'Authorization' : 'Bearer ' + token}
-        });
-
-        const data = await result.json();
-        return data.categories.items;
-    }
-
-    const _getPlaylistByGenre = async (token, genreId) => {
-        
-        const limit = 10;
-        
-        const result = await fetch(`https://api.spotify.com/v1/browse/categories/${genreId}/playlists?limit=${limit}`, {
-            method = 'GET',
-            headers: {'Authorization' : 'Bearer ' + token}
-
+            headers: {
+                'Authorization' : 'Bearer ' + token
+            }
         });
         const data = await result.json();
-        return data.playlists.items;
-    }
-
-    const _getTracks = async (token, trackEndPoint) => {
-
-        const result = await fetch(`${trackEndPoint}`, {
-            method: 'GET', 
-            headers: {'Authorization' : 'Bearer ' + token}
-        });
-
-        const data = await result.json();
-        return data.items;
-    }
-    const _getTrack = async (token, trackEndPoint) => {
-        const result = await fetch(`${trackEndPoint}`, {
-            method: 'GET',
-            headers: {'Authorization' : 'Bearer ' + token}
-        });
-
-        const data = await result.json();
-        return data;
+        return data.tracks.items;
     }
 
     return {
         getToken() {
             return _getToken();
         },
-        getGenres(token) {
-            return _getGenres(token);
-        },
-        getPlaylistByGenre(token, genreId) {
-            return _getPlaylistByGenre(token, genreId);
-        },
-        getTracks(token, tracksEndPoint) {
-            return _getTracks(token, tracksEndPoint);
-        },
-        getTrack(token, trackEndPoint){
-            return _getTrack(token, trackEndPoint);
+        _getTracks(token, songTitle) {
+            return _getTracks(token, songTitle);
         }
     }
+
 })();
 
-const UIController = (function() {
 
-    const DOMelements = {
-        selectGenre: '#select_genre', 
-        selectPlaylist: '#select_playlist',
-        buttonSubmit: '#btn_submit',
-        songTitle: '#song-title',
-        divSongDetail: '#song-detail',
+const UIController = (function() {
+    // object to hold references to
+
+
+    const DOMElements = {
+
+        songs: '#songs',
+        song : '#search-bar',
+        submitButton : '#button',
+        dataBox : '#data-box',
         hfToken: '#hidden_token',
-        divSonglist: '.song-list'
+        hfSong: '#hidden_song_title'
     }
 
-    return{
+
+    //public methods
+    return {
         inputField() {
-            return{
-                genre: document.querySelector(DOMelements.selectGenre),
-                playlist: document.querySelector(DOMelements.selectPlaylist),
-                tracks: document.querySelector(DOMelements.divSonglist),
-                submit: document.querySelector(DOMelements.buttonSubmit),
-                divSongDetail: document.querySelector(DOMelements.divSongDetail)
+            return {
+                songTitle: document.querySelector(DOMElements.song),
+                songs: document.querySelector(DOMElements.songs),
+                button: document.querySelector(DOMElements.submitButton),
+                data: document.querySelector(DOMElements.dataBox),
             }
         },
-
-        createGenre(text, value) {
-            const html = `<option value="${value}">${text}</option>`
-            document.querySelector(DOMelements.selectGenre).insertAdjacentElement('beforeend', html);
-        },
-
-        createPlaylist(text, value) {
-            const html = `<option value="${value}>${text}</option`;
-            document.querySelector(DOMelements.selectPlaylist).insertAdjacentElement('beforeend', html);
-        },
-        createTrack(id, name) {
-            const html = `<a href="#" class="list-group-item" id="${id}"`>
-            document.querySelector(DOMelements.divSonglist).insertAdjacentElement('beforeend', html);
-        },
-
-        createTrackDetail(img, title, artist) {
-            const detailDiv = document.querySelector(DOMelements.divSongDetail);
-
-            detailDiv.innerHTML = '';
-
-            const html = 
-            `
-            <div> 
-                <img src="${img}" alt="">
-            </div>
-            <div class="">
-                <label for="Genre" class="">${title}:</label>
-            </div>
-            <div class="">
-                <label for="artist" class=""> By ${artist}:</label>
-            <div>
-
-            `;
-            detailDiv.insertAdjacentElement('beforeend', html)
-        },
-        resetTrackDetail() {
-            this.inputField().divSongDetail.innerHTML = '';
-        },
-
-        resetTracks() {
-            this.inputField().tracks.innerHTML = '';
-            this.resetTrackDetail();
-        },
-
-        resetPlaylist() {
-            this.inputField().playlist.innerHTML = '';
-            this.resetTracks();
+        createTrack(name, artist) {
+            const html = `<a href="#" class="list-item">${name} <br> By: ${artist}</a>`;
+            document.querySelector(DOMElements.songs).insertAdjacentHTML('beforeend', html);
         },
 
         storeToken(value) {
-            document.querySelector(DOMelements.hfToken).value = value;
+            document.querySelector(DOMElements.hfToken).value = value;
         },
 
         getStoredToken() {
-            return {
-                token: document.querySelector(DOMelements.hfToken).value
+            return{
+                token: document.querySelector(DOMElements.hfToken).value
             }
+        },
+        storeSong(value){
+            document.querySelector(DOMElements.hfSong).value = value
+        },
+        getStoredToken() {
+            return{
+                token: document.querySelector(DOMElements.hfSong).value
+            }
+        },
+
+        resetSongs() {
+            this.inputField().songs.innerHTML = '';
         }
+
     }
-
-    
-
 })();
 
 
+const APPController = (function(UICtrl, APICtrl) {
 
+    // get input field object ref
+    const DOMInputs = UICtrl.inputField();
+
+    // create submit button click event listener
+    DOMInputs.button.addEventListener('click', async (e) => {
+        e.preventDefault();
+
+        UICtrl.resetSongs();
+
+        const token = await APICtrl.getToken();
+
+        const songTitle =  await DOMInputs.songTitle.value;
+        console.log(songTitle);
+        
+
+        
+        UICtrl.storeToken(token);
+        
+
+        const songs = await APICtrl._getTracks(token, songTitle);
+
+
+        songs.forEach(s => {
+            UICtrl.createTrack(s.name, s.artists[0].name);
+        });
+
+    });
+
+    return {
+        init() {
+            console.log('App is starting');
+            
+        }
+    }
+})(UIController, APIController);
+
+
+APPController.init();
