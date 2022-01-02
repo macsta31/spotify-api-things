@@ -9,6 +9,7 @@
 </head>
 <body>
     <header class="sptf-colors">
+        
         <h1 id="page-title">Find a Song</h1>
         <ul id="saved-songs">
             <li>Save a Song!</li>
@@ -25,14 +26,34 @@
             <section id="data-box">
                 <h2>Songs</h2>
                 <div id="songs">
-                    
+                    <div class="list-item" value=${id}>
+                        <input type="hidden" id="song-id" value="1Go9q6KaCpAsQ0wkZFGzY2">
+                        <button class="song-button" value="1Go9q6KaCpAsQ0wkZFGzY2">
+                            <p style="display:none">1Go9q6KaCpAsQ0wkZFGzY2</p>
+                            <a href="#">Chandelier <br> By: Will Paquin</a>
+                            <img src="https://i.scdn.co/image/ab67616d00001e0267d0c8237b8816ad6a5bdc90" class="list-item-image" value="1Go9q6KaCpAsQ0wkZFGzY2">
+
+                        </button>
+                    </div>
                 <div>
             </section>
             <section class="song-list" id="lyrics-box">
-                <h2 id="lyrics-box-title">Lyrics</h2>
-                <p id="lyrics">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique nesciunt exercitationem voluptas, repudiandae hic veniam cupiditate accusamus perferendis architecto saepe consectetur qui praesentium illum cum, dignissimos nihil inventore vero laboriosam.
-                </p>
+                <h2 id="lyrics-box-title">Song Data</h2>
+                <div id="lyrics">
+                    <div id="img-box">
+                        <img class='data-image' src="https://i.scdn.co/image/ab67616d0000b2737e1303e3fa3265c27ab663cb" alt="">
+                    </div>
+
+                    <div id="song-metaData">
+                        <h2>Artist: Will Paquin</h2>
+                        <h2>Name: Chandelier</h2>
+                        <p>Release Date: 2020-09-25</p>
+                        <p>Duration: 2:07 </p>
+                        <p>Explicit: true </p>
+                        <p>Popularity: 80 </p>
+                        
+                    </div>
+                </div>
             </section>
         </div>
     </div>    
