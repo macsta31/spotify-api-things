@@ -13,35 +13,19 @@
         <ul id="saved-songs">
             <li>Save a Song!</li>
         </ul>
-        <form action="" id="search-form">
+        <form class="subform">
             <input type="hidden" id="hidden_token">
-            <div class="subform">
-                <span>
-                    <label for="Genre">Genre:</label>
-                </span>
-                <span>
-                    <select name="" id="select_genre">
-                        <option>Select...</option>
-                    </select>
-                </span> 
-            </div> 
-            <div class="subform">
-                <label for="Playlist">Playlists:</label> 
-                <select name="" id="select_playlist">
-                    <option>Select...</option>
-                </select>
-            </div>
-            <div class="subform_btn">
-                <button type="submit" id="btn_submit">Search</button>
-            </div>
+            <input type="hidden" id="hidden_song_title">
+            <input type="text" id="search-bar" placeholder="Song name">
+            <button type='submit' id="button">Search</button>
         </form>
     </header>
     <div class="body-container dark-bg">
         <div class="main-container">
             <section id="data-box">
-                <h2 id="song-title">Song Title</h2>
-                <div>
-                    <div id="song-details"></div>
+                <h2>Songs</h2>
+                <div id="songs">
+                    
                 <div>
             </section>
             <section class="song-list" id="lyrics-box">
@@ -52,17 +36,7 @@
             </section>
         </div>
     </div>    
-    <footer class="sptf-colors-inverted">
-        <div class="footer-container">
-            <h2 id="footer-title">text here</h2>
-            <ul id="references">
-                <li><a href="#"></a>references</li>
-                <li><a href="#"></a>references</li>
-                <li><a href="#"></a>references</li>
-                <li><a href="#"></a>references</li>
-                <li><a href="#"></a>references</li>
-            </ul>
-        </div>
-    </footer>    
+    
+    <script src="script.js"></script>
 </body>
 </html>
