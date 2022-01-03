@@ -140,12 +140,14 @@ form{
     /* background-color: #221e1e; */
 }
 .main-container{
+    background-color: #221e1e;
     display:flex;
     flex-direction: column;
     gap: 3em;
 }
 #data-box{
     display:flex;
+    text-align: center;
     gap: 20px;
     flex-direction:column;
     align-items: center;;
@@ -177,8 +179,8 @@ form{
     display:flex;
     flex-direction:column;
     gap: 2em;
-    align-items:center;
-    justify-content: center;
+
+
 }
 #lyrics{
     display:flex;
@@ -262,8 +264,9 @@ form{
         display:flex;
         gap:10px;
         flex-direction: column;
-        width:100%;
+        width: 100%;
         text-align: center;
+        align-items: center;
         padding: 10px;
         background-color: #221e1e;
         border-radius: 10px;
