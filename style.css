@@ -17,7 +17,6 @@ a{
 }
 
 
-
 #search-bar:focus::placeholder{
     color:transparent;
 }
@@ -58,12 +57,12 @@ h2{
 }
 button{
     background: none;
-	color: inherit;
-	border: none;
-	padding: 0;
-	font: inherit;
-	cursor: pointer;
-	outline: inherit;
+    color: inherit;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
 }
 header{
     padding: 1.5em;
@@ -98,12 +97,12 @@ form{
 }
 #subform_btn{
     background: none;
-	color: inherit;
-	border: none;
-	padding: 0;
-	font: inherit;
-	cursor: pointer;
-	outline: inherit;
+    color: inherit;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
 }
 #button, #search-bar{
     border-radius: 10px;
@@ -124,41 +123,6 @@ form{
 #search-bar{
     width: 240px;
 }
-
-#songs{
-    display:flex;
-    flex-direction:column;
-    gap: 1em;
-}
-
-    
-    
-
-
-footer{
-    height: 200px;
-}
-.footer-container{
-    display:flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items:center;
-    gap: 1em;
-}
-#footer-title{
-    padding: 1em;
-}
-#references{
-    display:flex;
-    align-items:center;
-    justify-content: center;
-    gap:2em;
-    padding: 0.5em;
-
-}
-
-
-/* specific */
 #page-title{
     padding-top: 0.5em;
 }
@@ -176,107 +140,210 @@ footer{
     /* background-color: #221e1e; */
 }
 .main-container{
-    display: flex;
-    flex-direction: row;
-    height: 100%;
+    display:flex;
+    flex-direction: column;
+    gap: 3em;
 }
 #data-box{
     display:flex;
-    align-items:center;
-    min-width:min-content;
-    flex-direction: column;
     gap: 20px;
-    background-color:#181313; 
-    width: 30%;
-    padding: 2em 3em 3em 3em;
-    overflow:scroll;
-    
+    flex-direction:column;
+    align-items: center;;
 }
-.list-item{
-    display:flex;
-    gap:10px;
-    flex-direction: column;
-    width:100%;
-    text-align: center;
-    padding: 10px;
-    background-color: #221e1e;
-    border-radius: 10px;
-}
-#song-details{
-    padding-top: 15px;
-    text-align: center;
-}
-#lyrics-box{
-    display: flex;
-    align-items:center;
-    flex-direction: column;
+
+#songs{
+    width: 90%;
+    display:grid;
+    justify-items: center;
     align-items: center;
-    width:75%;
-    padding: 2em;
-    gap: 2em;
-}
-#lyrics{
-    width: 100%;
-    gap: 2em;
+    gap: 1em;
+    grid-template-columns: repeat(3, 1fr);
 }
 
-#lyrics-box-title{
-    height: 100px;
-    text-align: center;
-    padding-bottom: 1em;
-}
-
-#lyrics{
-    display:flex;
-    flex-direction: column;
-    align-items:center;
-    justify-content: center;
-
-}
-#song-title{
-    max-width: 80%;
-    text-align:center;
-}
 .song-button{
     display:flex;
+    gap: 20px;
+    align-items: center;
     flex-direction: column;
-    align-items:center;
-    gap: 10px;
+    max-width: 150px;
 }
 
 .list-item-image{
-    width: 80%;
-    align-self: center;
-    z-index: 0;
+    max-width:150px;
 }
 
-.song-button{
-    z-index:2;
-    background-color:transparent;
-
-    /* visibility: hidden; */
+#lyrics-box{
+    background: linear-gradient(#221e1e, #191414);
+    display:flex;
+    flex-direction:column;
+    gap: 2em;
+    align-items:center;
+    justify-content: center;
 }
+#lyrics{
+    display:flex;
+    flex-direction: row-reverse;
+    gap: 2em;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 60px;
+}
+
 
 .data-image{
-    width: 80%;
-    
+    max-width: 400px;
 }
 #song-metaData{
-    width: min-content;
-    max-width: 600px;
-    word-wrap: break-word;
     display:flex;
     flex-direction: column;
-    gap:1em;
-    align-items: center;
-}
-#img-box{
-    display:flex;
-    align-items:center;
-    justify-content: center;;
-    
+    gap: 10px;
+    width:300px;
 }
 
-#song-metaData > p {
-    font-size: 1.2em;
+
+@media screen and (min-width:772px){
+
+
+    
+
+    #songs{
+        display:flex;
+        flex-direction:column;
+        gap: 1em;
+    }
+
+        
+        
+
+
+    footer{
+        height: 200px;
+    }
+    .footer-container{
+        display:flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items:center;
+        gap: 1em;
+    }
+    #footer-title{
+        padding: 1em;
+    }
+    #references{
+        display:flex;
+        align-items:center;
+        justify-content: center;
+        gap:2em;
+        padding: 0.5em;
+
+    }
+
+
+    /* specific */
+   
+    .main-container{
+        display: flex;
+        flex-direction: row;
+        min-height: 100vh;
+    }
+    #data-box{
+        display:flex;
+        align-items:center;
+        min-width:min-content;
+        flex-direction: column;
+        gap: 20px;
+        background-color:#181313; 
+        width: 30%;
+        padding: 2em 3em 3em 3em;
+        overflow:scroll;
+        
+    }
+    .list-item{
+        display:flex;
+        gap:10px;
+        flex-direction: column;
+        width:100%;
+        text-align: center;
+        padding: 10px;
+        background-color: #221e1e;
+        border-radius: 10px;
+    }
+    #song-details{
+        padding-top: 15px;
+        text-align: center;
+    }
+    #lyrics-box{
+        display: flex;
+        align-items:center;
+        flex-direction: column;
+        align-items: center;
+        width:75%;
+        padding: 2em;
+        gap: 2em;
+    }
+    #lyrics{
+        width: 100%;
+        gap: 2em;
+    }
+
+    #lyrics-box-title{
+        height: 100px;
+        text-align: center;
+        padding-bottom: 1em;
+    }
+
+    #lyrics{
+        display:flex;
+        flex-direction: column;
+        align-items:center;
+        justify-content: center;
+
+    }
+    #song-title{
+        max-width: 80%;
+        text-align:center;
+    }
+    .song-button{
+        display:flex;
+        flex-direction: column;
+        align-items:center;
+        gap: 10px;
+    }
+
+    .list-item-image{
+        width: 80%;
+        align-self: center;
+        z-index: 0;
+    }
+
+    .song-button{
+        z-index:2;
+        background-color:transparent;
+
+        /* visibility: hidden; */
+    }
+
+    .data-image{
+        width: 80%;
+        
+    }
+    #song-metaData{
+        width: min-content;
+        max-width: 600px;
+        word-wrap: break-word;
+        display:flex;
+        flex-direction: column;
+        gap:1em;
+        align-items: center;
+    }
+    #img-box{
+        display:flex;
+        align-items:center;
+        justify-content: center;;
+        
+    }
+
+    #song-metaData > p {
+        font-size: 1.2em;
+    }
 }

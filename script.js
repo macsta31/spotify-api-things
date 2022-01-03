@@ -23,7 +23,7 @@ const APIController = (function() {
     const _getTracks = async (token, songTitle) => {
 
 
-        const result = await fetch(`https://api.spotify.com/v1/search?q=track%3A${songTitle}&type=track&market=US&limit=15&offset=0`, {
+        const result = await fetch(`https://api.spotify.com/v1/search?q=track%3A${songTitle}&type=track&market=US&limit=12&offset=0`, {
             method: 'GET',
             headers: {
                 'Authorization' : 'Bearer ' + token
